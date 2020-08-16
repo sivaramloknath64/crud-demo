@@ -12,9 +12,8 @@ COPY . .
 RUN npm run build --prod
 
 # Stage 2
-FROM nginx:1.13.12-alpine
+FROM nginx:1.17-alpine
 
 COPY --from=node /usr/src/app/dist /usr/share/nginx/html
-
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-
+EXPOSE 80
+CMD ["nginx","-g","daemon off;"]
