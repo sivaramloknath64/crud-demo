@@ -7,12 +7,12 @@ pipeline {
 agent any  
 stages {
 
-          stage('npm install package'){
+   stage('npm install package'){
                 steps{
-                  echo "installing the npm package "
-                  
-                  sh'npm install'
-      
+                    sh label: '', script: '''
+                         npm install 
+                     '''
+                     echo 'Installing packages completed...'
                     }
             }
                 stage('Build'){
@@ -52,7 +52,7 @@ stages {
         echo "deploying to dev environment"
         
      sh "docker rm -f angulardemo || true"
-     sh " docker run -d --name=angulardemo -p 8082:8081 sivaramloknath64/angular"     
+     sh " docker run -d --name=angulardemo -p 80:80 sivaramloknath64/angular"     
               
         
         }
