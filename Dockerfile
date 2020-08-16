@@ -15,5 +15,5 @@ RUN npm run build --prod
 FROM nginx:1.17-alpine
 
 COPY --from=node /usr/src/app/dist /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx","-g","daemon off;"]
+
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
