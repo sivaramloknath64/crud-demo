@@ -12,7 +12,7 @@ stages {
                     sh label: '', script: '''
                          npm install 
                      '''
-                     echo 'Installing packages completed...'
+                     echo 'npm installed successfully'
                     }
             }
                 stage('Build'){
