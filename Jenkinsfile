@@ -15,10 +15,7 @@ stages {
                   echo "installing the npm package "
                   
                   sh'npm install'
-                  
-                   
-                         
-                     
+      
                     }
             }
                 stage('Build'){
@@ -40,30 +37,7 @@ stages {
     }
 
 
-   stage ('Push Docker Image') {
-      steps{
-        echo "Pushing Docker Image"
-        script {
-          docker.withRegistry( '', registryCredential ) {
-              dockerImage.push()
-              dockerImage.push('latest')
-          }
-        }
-      }
-    }
-  
-  
-    stage ('Deploy to dev Environment') {
-      steps{
-        echo "deploying to dev environment"
-        
-     sh "docker rm -f angulardemo || true"
-     sh " docker run -d --name=angulardemo -p 8082:8081 sivaramloknath64/angular"     
-              
-        
-        }
-      }
- 
+   
   
 }
 }
