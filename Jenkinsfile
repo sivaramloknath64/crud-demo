@@ -4,10 +4,7 @@ pipeline {
     registryCredential = 'docker_hub_loknath'
     dockerImage = ''
   }
-agent any
-  
-  tools {nodejs "node10"}
- 
+agent any  
 stages {
 
           stage('npm install package'){
