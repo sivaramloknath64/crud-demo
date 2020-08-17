@@ -1,18 +1,13 @@
 # Stage 1
-FROM node:10.15.3-alpine as node
+FROM node:10.15.3-alpine as builder
 
-WORKDIR /usr/src/app
-
-COPY package*.json ./
-
+WORKDIR /DOCKERDEMO
+COPY ..
 RUN npm install
-
-COPY . .
-
 RUN npm run build --prod
 
 # Stage 2
-FROM nginx:1.17-alpine
+FROM nginx:1.15.8-alpine
 
-COPY --from=node /usr/src/app/dist /usr/share/nginx/html
+COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
 
