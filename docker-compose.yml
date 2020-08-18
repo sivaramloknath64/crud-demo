@@ -1,7 +1,7 @@
 version: '2.3'
 
 services:
-  heartihealth-app:
+    crud-demo:
     hostname: localhost
     container_name:crud_demo
     build: .
