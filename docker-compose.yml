@@ -3,7 +3,7 @@ version: '2.3'
 services:
     crud-demo:
     hostname: localhost
-    container_name:crud_demo
+    container_name: crud_demo
     build: .
     ports:
       - 80:80
