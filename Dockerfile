@@ -12,7 +12,9 @@ RUN npm run build --prod
 
 
 # Stage 2
-FROM nginx:1.15.8-alpine
 
-COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
+FROM nginx:1.13.12-alpine
 
+COPY --from=node /usr/src/app/dist /usr/share/nginx/html
+
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
